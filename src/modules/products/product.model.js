@@ -7,12 +7,12 @@ const GET_ALL_PRODUCTS = `
 // /////////////////////////////////////////////////////////////////////////////////////
 // CREATE PRODUCTS
 const CREATE_PRODUCTS = `
-    INSERT INTO products(product_img,product_price,product_title,product_sub_title) VALUES($1,$2,$3,$4)
+    INSERT INTO products(product_img,product_price,product_title,product_sub_title,sub_category_id) VALUES($1,$2,$3,$4,$5)
 `;
 // /////////////////////////////////////////////////////////////////////////////////////
 // UPDATE PRODUCTS
 const UPDATE_PRODUCTS = `
-    UPDATE products SET product_img = $1, product_price = $2, product_title = $3, product_sub_title = $4 WHERE id = $5
+    UPDATE products SET product_img = $1, product_price = $2, product_title = $3, product_sub_title = $4, sub_category_id = $5 WHERE id = $6
 `;
 // /////////////////////////////////////////////////////////////////////////////////////
 // UPDATE DATE
@@ -55,14 +55,16 @@ const createProduct = (
     product_img,
     product_price,
     product_title,
-    product_sub_title
+    product_sub_title,
+    sub_category_id
 ) =>
     fetch(
         CREATE_PRODUCTS,
         product_img,
         product_price,
         product_title,
-        product_sub_title
+        product_sub_title,
+        sub_category_id
     );
 // UPDATE PRODUCTS
 // /////////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +73,8 @@ const updateProducts = (
     product_img,
     product_price,
     product_title,
-    product_sub_title
+    product_sub_title,
+    sub_category_id
 ) =>
     fetch(
         UPDATE_PRODUCTS,
@@ -79,7 +82,8 @@ const updateProducts = (
         product_img,
         product_price,
         product_title,
-        product_sub_title
+        product_sub_title,
+        sub_category_id
     );
 // EXPORT MODELS
 // /////////////////////////////////////////////////////////////////////////////////////

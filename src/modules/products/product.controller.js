@@ -1,18 +1,24 @@
-const model = require("./product.mode");
+const model = require("./product.model");
 
 module.exports = {
     // CREATE PRODUCT
     // ////////////////////////////////////////////////////////////////
     CREATE_PRODUCT: async (req, res) => {
-        const { product_img, product_price, product_title, product_sub_title } =
-            req.body;
+        const {
+            product_img,
+            product_price,
+            product_title,
+            product_sub_title,
+            sub_category_id,
+        } = req.body;
 
         try {
             await model.createProduct(
                 product_img,
                 product_price,
                 product_title,
-                product_sub_title
+                product_sub_title,
+                sub_category_id
             );
 
             res.status(201).json({
@@ -40,8 +46,13 @@ module.exports = {
     // UPDATE PRODUCT
     // ////////////////////////////////////////////////////////////////
     UPDATE_PRODUCT: async (req, res) => {
-        const { product_img, product_price, product_title, product_sub_title } =
-            req.body;
+        const {
+            product_img,
+            product_price,
+            product_title,
+            product_sub_title,
+            sub_category_id,
+        } = req.body;
 
         const { id } = req.params;
 
@@ -51,6 +62,7 @@ module.exports = {
                 product_price,
                 product_title,
                 product_sub_title,
+                sub_category_id,
                 id
             );
 
