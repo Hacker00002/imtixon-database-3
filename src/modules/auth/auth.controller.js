@@ -2,6 +2,7 @@ const { sign } = require("../../helpers");
 const model = require("./auth.model");
 
 module.exports = {
+    // SIGN UP
     // ////////////////////////////////////////////////////////////////
     SIGN_UP: async (req, res) => {
         try {
@@ -36,7 +37,7 @@ module.exports = {
             res.status(error).json({ message: error.message });
         }
     },
-
+    //SIGN IN
     // ////////////////////////////////////////////////////////////////
     SIGN_IN: async (req, res) => {
         const { user_email } = req.body;
@@ -57,7 +58,7 @@ module.exports = {
             res.status(error).json({ message: error.message });
         }
     },
-
+    //GET ALL USER
     // ////////////////////////////////////////////////////////////////
     GET_ALL_USERS: async (_, res) => {
         try {
@@ -70,7 +71,7 @@ module.exports = {
             res.status(error).json({ message: error.message });
         }
     },
-
+    //USER_ACCOUNT
     // ////////////////////////////////////////////////////////////////
     USER_ACCOUNT: async (req, res) => {
         const { id } = req.params;
@@ -91,7 +92,7 @@ module.exports = {
             res.status(error).json({ message: error.message });
         }
     },
-
+    //UPDATE ACCOUNT
     // ////////////////////////////////////////////////////////////////
     UPDATE_ACCOUNT: async (req, res) => {
         const { id } = req.params;

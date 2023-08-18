@@ -4,11 +4,14 @@ const ProductsController = require("./product.controller");
 const productRoutes = Router();
 
 productRoutes
-    //POST
+    //POST PRODUCTS
     .post("/product/create", ProductsController.CREATE_PRODUCT)
     .patch("/product/update/:id", ProductsController.UPDATE_PRODUCT)
-    // GET
-    .get("/product/search", ProductsController.SEARCH_BY_TITLE)
-    .get("/product/all-products", ProductsController.GET_ALL_PRODUCTS);
-
+    // GET PRODUCTS
+    .get("/product", ProductsController.SEARCH_BY_TITLE)
+    .get("/product/all-products", ProductsController.GET_ALL_PRODUCTS)
+    // CATEGORY
+    .get("/category", ProductsController.GET_CATEGORY)
+    .get("/sub-category", ProductsController.GET_SUB_CATEGORY);
+// EXPORT ROUTES
 module.exports = productRoutes;
