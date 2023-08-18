@@ -15,6 +15,8 @@ authRoutes
     )
     // GET USERS AND ACCOUNT
     .get("/users", AuthController.GET_ALL_USERS)
-    .get("/account/:id", verifyAccessMiddleware, AuthController.USER_ACCOUNT);
+    .get("/account/:id", verifyAccessMiddleware, AuthController.USER_ACCOUNT)
+    // DELETE ACCOUNT
+    .delete("/account/delete/:id", AuthController.DELETE_ACCOUNT);
 // EXPORT ROUTES
 module.exports = authRoutes;

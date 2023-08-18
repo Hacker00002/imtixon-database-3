@@ -20,6 +20,16 @@ const UPDATE_CERATED = `
     UPDATE users SET updated_at = CURRENT_TIMESTAMP WHERE id = $1
 `;
 // /////////////////////////////////////////////////////////////////////////////////////
+// UPDATE_CERATED
+const DELETED_DATE = `
+    UPDATE archive SET deleted_at = CURRENT_TIMESTAMP WHERE id = $1
+`;
+// /////////////////////////////////////////////////////////////////////////////////////
+// DELETE_ACCOUNT
+const DELETE_ACCOUNT = `
+    DELETE FROM users WHERE id = $1
+`;
+// /////////////////////////////////////////////////////////////////////////////////////
 // UPDATE_ACCOUNT
 const UPDATE_ACCOUNT = `
     UPDATE users SET user_email = $1, user_username = $2, user_password = crypt($3, gen_salt('bf', 4)), user_lastname = $4, user_phonenumber = $5 WHERE id = $6
@@ -32,6 +42,12 @@ const CREATE_NEW_USER = `
 // GET ALL USERS
 // /////////////////////////////////////////////////////////////////////////////////////
 const getAllusers = () => fetch(GET_ALL_USER);
+// DELET ACCOUNT
+// /////////////////////////////////////////////////////////////////////////////////////
+const deleteUserAccount = (id) => fetch(DELETE_ACCOUNT, id);
+// DELET ACCOUNT
+// /////////////////////////////////////////////////////////////////////////////////////
+const deleteDateAdd = (id) => fetch(DELETED_DATE, id);
 // UPDATE DATE
 // /////////////////////////////////////////////////////////////////////////////////////
 const updateDate = (id) => fetch(UPDATE_CERATED, id);
@@ -87,4 +103,6 @@ module.exports = {
     getAccountUser,
     updateAccount,
     updateDate,
+    deleteUserAccount,
+    deleteDateAdd,
 };

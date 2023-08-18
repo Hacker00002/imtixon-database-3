@@ -130,4 +130,19 @@ module.exports = {
             res.status(error).json({ message: error.message });
         }
     },
+    //DELETE ACCOUNT
+    // ////////////////////////////////////////////////////////////////
+    DELETE_ACCOUNT: async (req, res) => {
+        const { id } = req.params;
+        try {
+            await model.deleteUserAccount(id);
+            await model.deleteDateAdd(id);
+
+            res.status(201).json({
+                message: "Succesfully account deleted",
+            });
+        } catch (error) {
+            res.status(error).json({ message: error.message });
+        }
+    },
 };
